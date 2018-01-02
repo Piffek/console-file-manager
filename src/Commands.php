@@ -3,7 +3,8 @@
 class Commands implements CommandInterface
 {
     private $shortopt;
-    private $longopt = array();
+
+    private $longopt = [];
 
     public function setShort(string $short)
     {
@@ -15,7 +16,7 @@ class Commands implements CommandInterface
         $this->longopt = $long;
     }
 
-    public function getShort() : string
+    public function getShort(): string
     {
         return $this->shortopt;
     }
@@ -23,5 +24,10 @@ class Commands implements CommandInterface
     public function getLong(): array
     {
         return $this->longopt;
+    }
+
+    public function set()
+    {
+        return getopt($this->shortopt, $this->longopt);
     }
 }
